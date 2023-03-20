@@ -1,15 +1,33 @@
-Source: template-repository
-Section: unknown
+Source: powertop
+Section: utils
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Kan-Ru Chen (陳侃如) <koster@debian.org>
+Uploaders: Ross Vandegrift <rvandegrift@debian.org>
+Build-Depends: debhelper-compat (= 13),
+               libncurses-dev,
+               libnl-3-dev,
+               libnl-genl-3-dev,
+               libpci-dev,
+               pkg-config,
+	       autoconf-archive
+Standards-Version: 4.5.1
+Vcs-Git: https://salsa.debian.org/debian/powertop.git
+Vcs-Browser: https://salsa.debian.org/debian/powertop
+Homepage: https://01.org/powertop/
+Rules-Requires-Root: no
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: powertop
+Architecture: linux-any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Suggests: cpufrequtils, laptop-mode-tools
+Description: diagnose issues with power consumption and management
+ PowerTOP is a Linux tool to diagnose issues with power consumption and
+ power management. In addition to being a diagnostic tool, PowerTOP also
+ has an interactive mode you can use to experiment with various power
+ management settings, for cases where the Linux distribution has not
+ enabled those settings.
+ .
+ PowerTOP reports which components in the system are most likely to blame
+ for higher-than-needed power consumption, ranging from software
+ applications to active components in the system. Detailed screens are
+ available for CPU C and P states, device activity, and software activity.

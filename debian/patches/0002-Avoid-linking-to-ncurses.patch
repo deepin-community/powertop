@@ -1,0 +1,25 @@
+From: Sven Joachim <svenjoac@gmx.de>
+Date: Sun, 13 May 2018 09:23:07 +0200
+Subject: Avoid linking to ncurses
+
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2571c5d..b9ef12b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -105,9 +105,9 @@ AC_CHECK_FUNCS([ \
+ 
+ AC_SEARCH_LIBS([clock_gettime], [rt])
+ 
+-PKG_CHECK_MODULES([NCURSES], [ncursesw ncurses], [LIBS="$LIBS $ncurses_LIBS"], [
+-	AC_SEARCH_LIBS([delwin], [ncursesw ncurses], [], [
+-		AC_MSG_ERROR([ncurses is required but was not found])
++PKG_CHECK_MODULES([NCURSES], [ncursesw], [LIBS="$LIBS $ncurses_LIBS"], [
++	AC_SEARCH_LIBS([delwin], [ncursesw], [], [
++		AC_MSG_ERROR([ncursesw is required but was not found])
+ 	], [])
+ ])
+ 

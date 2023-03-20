@@ -1,0 +1,18 @@
+From: Kan-Ru Chen <kanru@kanru.info>
+Date: Sun, 15 Aug 2021 22:30:26 +0900
+Subject: remove shebang from bash-completion file
+
+---
+ scripts/bash-completion/powertop | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/scripts/bash-completion/powertop b/scripts/bash-completion/powertop
+index 03d238e..4f03a1a 100644
+--- a/scripts/bash-completion/powertop
++++ b/scripts/bash-completion/powertop
+@@ -1,5 +1,3 @@
+-#!/bin/bash
+-#
+ # Powertop tab completion for bash.
+ #
+ # This is part of PowerTOP
