@@ -1,0 +1,38 @@
+From: Kan-Ru Chen <kanru@kanru.info>
+Date: Fri, 3 Jan 2020 22:10:51 +0900
+Subject: Use correct path to hciconfig on Debian
+
+Fixes: #772571
+---
+ src/tuning/bluetooth.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/tuning/bluetooth.cpp b/src/tuning/bluetooth.cpp
+index 2958849..eb50b92 100644
+--- a/src/tuning/bluetooth.cpp
++++ b/src/tuning/bluetooth.cpp
+@@ -46,8 +46,8 @@
+ bt_tunable::bt_tunable(void) : tunable("", 1.0, _("Good"), _("Bad"), _("Unknown"))
+ {
+ 	sprintf(desc, _("Bluetooth device interface status"));
+-	pt_strcpy(toggle_bad, "/usr/sbin/hciconfig hci0 up &> /dev/null &");
+-	pt_strcpy(toggle_good, "/usr/sbin/hciconfig hci0 down &> /dev/null");
++	pt_strcpy(toggle_bad, "/bin/hciconfig hci0 up &> /dev/null &");
++	pt_strcpy(toggle_good, "/bin/hciconfig hci0 down &> /dev/null");
+ }
+ 
+ 
+@@ -176,11 +176,11 @@ void bt_tunable::toggle(void)
+ 	good = good_bad();
+ 
+ 	if (good == TUNE_GOOD) {
+-		if(system("/usr/sbin/hciconfig hci0 up &> /dev/null &"))
++		if(system("/bin/hciconfig hci0 up &> /dev/null &"))
+ 			printf("System is not available\n");
+ 		return;
+ 	}
+-	if(system("/usr/sbin/hciconfig hci0 down &> /dev/null"))
++	if(system("/bin/hciconfig hci0 down &> /dev/null"))
+ 		printf("System is not available\n");
+ }
+ 
